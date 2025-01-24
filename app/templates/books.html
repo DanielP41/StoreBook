@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Libro</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("bookForm").addEventListener("submit", function(event) {
+                const title = document.getElementById("title").value;
+                const authorId = document.getElementById("author_id").value;
+                let isValid = true;
+                
+                // Validación del título del libro
+                if (title.trim().length < 3) {
+                    isValid = false;
+                    alert("El título del libro debe tener al menos 3 caracteres.");
+                }
+
+                // Validación del autor
+                if (authorId === "") {
+                    isValid = false;
+                    alert("Por favor, selecciona un autor.");
+                }
+                
+                // Evitar envío si hay errores
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Agregar un Nuevo Libro</h1>
+    <form id="bookForm" method="POST" action="{{ url_for('books') }}">
+        <label for="title">Título del Libro:</label>
+        <input type="text" id="title" name="title" required minlength="3">
+
+        <label for="author_id">Autor:</label>
+        <select id="author_id" name="author_id" required>
+            <option value="">Selecciona un autor</option>
+            <!-- Aquí se incluyen opciones de autores desde tu base de datos -->
+            {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Agregar Libro">
+    </form>
+</body>
+</html>
