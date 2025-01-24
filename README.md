@@ -1,2 +1,2 @@
 # StoreBook
-proyecto para demostrar conocimientos en Python, Fask y SQLAlquemist.-
+Proyecto para demostrar conocimientos en Python, Fask y SQLAlquemist.-
