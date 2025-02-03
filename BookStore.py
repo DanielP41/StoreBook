@@ -18,5 +18,4 @@ app.config.from_object(Config)
 if __name__ == '__main__':
     app.run()
 
-#revisar copilot, xq el proyecto todavia no termino#
 
